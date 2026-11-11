@@ -44,7 +44,7 @@ export default function CreateEventPage() {
 
     try {
       setSubmitting(true);
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/events/create`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://co-act-platfrom-server.vercel.app"}/api/events/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

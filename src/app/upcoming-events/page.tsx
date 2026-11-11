@@ -29,7 +29,7 @@ export default function UpcomingEventsPage() {
   const [events, setEvents] = useState<EventItem[]>(mockEvents);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/events/upcoming`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://co-act-platfrom-server.vercel.app"}/api/events/upcoming`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {

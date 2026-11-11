@@ -38,7 +38,7 @@ export default function ManageEventsPage() {
     const localData = localStorage.getItem(localCreatedKey);
     let filteredList: EventItem[] = localData ? JSON.parse(localData).filter((e: EventItem) => e.creatorEmail === user.email) : [];
 
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/events/my-events?email=${user.email}`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://co-act-platfrom-server.vercel.app"}/api/events/my-events?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -67,7 +67,7 @@ export default function ManageEventsPage() {
       setMyEvents((prev) => prev.filter((e) => e._id !== id));
       showToast("ইভেন্টটি সফলভাবে ডিলিট করা হয়েছে", "success");
 
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/events/delete/${id}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://co-act-platfrom-server.vercel.app"}/api/events/delete/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${user?.token}` }
       });

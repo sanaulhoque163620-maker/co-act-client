@@ -43,7 +43,7 @@ export default function EventDetailsPage({ params }: { params: Promise<{ id: str
           setEvent(mockEvents[idFromPath]);
           setLoading(false);
         } else if (idFromPath) {
-          fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/events/details/${idFromPath}`)
+          fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://co-act-platfrom-server.vercel.app"}/api/events/details/${idFromPath}`)
             .then((res) => res.json())
             .then((data) => {
               if (data && data._id) {
@@ -95,7 +95,7 @@ export default function EventDetailsPage({ params }: { params: Promise<{ id: str
       list.push(newJoinItem);
       localStorage.setItem(localKey, JSON.stringify(list));
 
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/events/join`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://co-act-platfrom-server.vercel.app"}/api/events/join`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
